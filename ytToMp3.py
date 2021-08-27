@@ -1,5 +1,6 @@
 # imports
-import pytube, os
+from pytube import YouTube
+import os
 
 # functions
 def clear():
@@ -7,3 +8,10 @@ def clear():
 
 # main
 clear()
+try:
+    yt = YouTube(input('Please insert YouTube URL: ')) #yt url
+
+    output = yt.streams.filter(only_audio=True).first().download(output_path='\MP3s')
+    print(f'\n{output}')
+except Exception as e:
+    print(f'\n{e}')
